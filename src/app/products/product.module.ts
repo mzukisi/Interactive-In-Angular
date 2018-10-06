@@ -10,6 +10,7 @@ import { ProductEditComponent } from './edit/product-edit.component';
 import { ProductService } from './product.service';
 import { ProductEditGuard } from './edit/product-edit-guard.service';
 import { SharedModule } from '../shared/shared.module';
+import { ProductsParameterService } from './products-parameter-.service';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     ProductService,
-    ProductEditGuard
+    ProductEditGuard,
+    ProductsParameterService
   ]
 })
 export class ProductModule { }

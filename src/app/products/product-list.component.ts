@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { IProduct } from './product';
 import { ProductService } from './product.service';
+import { ProductsParameterService } from './products-parameter-.service';
+import { CriteriaComponent } from '../shared/criteria/criteria.component';
 
 @Component({
     templateUrl: './product-list.component.html',
@@ -9,8 +11,6 @@ import { ProductService } from './product.service';
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
-    showImage: boolean;
-
     imageWidth: number = 50;
     imageMargin: number = 2;
     errorMessage: string;
@@ -18,16 +18,26 @@ export class ProductListComponent implements OnInit {
     filteredProducts: IProduct[];
     products: IProduct[];
     includeDetails = true;
-    constructor(private productService: ProductService) { }
-    onValueChange(value:string):void{
-        this.performFilter(value);
+    @ViewChild(CriteriaComponent) filterCompont: CriteriaComponent;
+    constructor(private productService: ProductService,
+        private productParameterService: ProductsParameterService) { }
+    get showImage(): boolean {
+        return this.productParameterService.showImage;
+    }
+    set showImage(value: boolean) {
+        this.productParameterService.showImage = value;
+    }
+    onValueChange(value: string): void {
+        this.performFilter( this.productParameterService.filterBy = value);
     }
     ngOnInit(): void {
         this.productService.getProducts().subscribe(
             (products: IProduct[]) => {
                 this.products = products;
                 //this.performFilter(this.listFilter);
-                this.performFilter();
+                debugger
+                this.filterCompont.listFilter = this.productParameterService.filterBy;
+                //this.performFilter();
             },
             (error: any) => this.errorMessage = <any>error
         );
