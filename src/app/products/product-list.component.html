@@ -6,7 +6,11 @@
     <div class='panel-body'>
         <!-- Filter by the Title   -->
         <div class='row'>
-            <pm-criteria></pm-criteria>
+            <pm-criteria class='col-md-10'
+             [displayDetails]='includeDetails'
+             [hitCount]='filteredProducts?.length'
+             (valueChange)='onValueChange($event)'
+            ></pm-criteria>
            </div>
 
         <div class='table-responsive'>
