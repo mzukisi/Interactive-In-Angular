@@ -9,7 +9,14 @@ import { ProductService } from './product.service';
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
-    listFilter: string;
+    //    private _listFilter: string;
+    //     public get listFilter(): string {
+    //         return this._listFilter;
+    //     }
+    //     public set listFilter(value: string) {
+    //         this._listFilter = value;
+    //         this.performFilter(this._listFilter);
+    //     }
     showImage: boolean;
 
     imageWidth: number = 50;
@@ -25,7 +32,8 @@ export class ProductListComponent implements OnInit {
         this.productService.getProducts().subscribe(
             (products: IProduct[]) => {
                 this.products = products;
-                this.performFilter(this.listFilter);
+                //this.performFilter(this.listFilter);
+                this.performFilter();
             },
             (error: any) => this.errorMessage = <any>error
         );

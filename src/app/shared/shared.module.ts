@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { StarComponent } from './star.component';
+import { CriteriaComponent } from './criteria/criteria.component';
 
 @NgModule({
   imports: [
@@ -10,9 +11,11 @@ import { StarComponent } from './star.component';
     FormsModule
   ],
   declarations: [
-    StarComponent
+    StarComponent,
+    CriteriaComponent
   ],
   exports: [
+    CriteriaComponent,
     StarComponent,
     CommonModule,
     FormsModule
