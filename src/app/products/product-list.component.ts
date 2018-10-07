@@ -34,10 +34,7 @@ export class ProductListComponent implements OnInit {
         this.productService.getProducts().subscribe(
             (products: IProduct[]) => {
                 this.products = products;
-                //this.performFilter(this.listFilter);
-                debugger
                 this.filterCompont.listFilter = this.productParameterService.filterBy;
-                //this.performFilter();
             },
             (error: any) => this.errorMessage = <any>error
         );
