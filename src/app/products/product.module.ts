@@ -11,12 +11,15 @@ import { ProductService } from './product.service';
 import { ProductEditGuard } from './edit/product-edit-guard.service';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsParameterService } from './products-parameter-.service';
+import { ProductShellListComponent } from './product-shell/product-shell-list.component';
+import { ProductShellDetailComponent } from './product-shell/product-shell-detail.component';
+import { ProductShellComponent } from './product-shell/product-shell.component';
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: '', component: ProductListComponent },
+      { path: '', component: ProductShellComponent },
       { path: ':id', component: ProductDetailComponent },
       {
         path: ':id/edit',
@@ -29,6 +32,9 @@ import { ProductsParameterService } from './products-parameter-.service';
     ProductListComponent,
     ProductDetailComponent,
     ProductEditComponent,
+    ProductShellListComponent,
+    ProductShellDetailComponent,
+    ProductShellComponent
 
   ],
   providers: [
